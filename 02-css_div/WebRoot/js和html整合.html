@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>js和html整合.html</title>
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+     <!--<script type="text/javascript" src="js/1.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+	<script>
+		function getsome(){
+		var x = document.getElementById("btn");
+		alert(x.value)
+		}
+	</script>
+	
+  </head>
+  
+  <body>
+  	<script type="text/javascript" src="js/1.js"></script>
+    <input type="button" value="单击我试试" onclick="printxxx(123)" >
+    <input type="button" id="btn" value="确定" onclick="getsome()">
+  </body> 
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>表单校验.html</title>
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script>
+		//获取用户名 及其内容
+		function checkForm(){
+			//获取用户名 及其内容
+				var usernameObj = document.getElementById("user");
+				var username = usernameObj.value;
+				
+				if(username!="duuuuecho"){
+					alert("非法用户");
+					return false;
+				}
+			//获取密码 及其内容	
+				var passwordObj = document.getElementById("pass");
+				var password = passwordObj.value;
+				if(password!="duuuuecho"){
+					alert("密码错误");
+					passwordObj.value = ""
+					return false;
+				}
+		}
+	</script>
+  </head>
+  
+  <body>
+   <form action="#" method="get" onsubmit="return checkForm()">
+			<input type="hidden" name="id" />
+			姓名:<input name="username" id="user"/><br>
+			密码:<input type="password" name="password" id="pass" ><br>
+			
+			
+			<input type="submit" value="保存"/>
+			<input type="reset" />
+		
+		</form>
+  </body>
+</html>

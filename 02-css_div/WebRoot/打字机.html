@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>打字机.html</title>
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script>
+		var x = "我们都是男子汉";
+		
+		var index =0 ;
+		var divObj;
+		
+		function init(){
+			divObj = document.getElementById("daziji");
+			setInterval(show,200);
+		}
+		
+		
+		function show(){
+		//初始化标签体内容
+			index++;
+			var x_ = x.substring(0,index);
+			divObj.innerHTML=x_;
+			if(index==x.length){
+				index=0;
+			}
+			
+		}
+	
+	</script>
+	
+  </head>
+  
+  <body onload="init()" id="body">
+  	<div id="daziji"> 
+  	
+  	</div>
+  </body>
+</html>
