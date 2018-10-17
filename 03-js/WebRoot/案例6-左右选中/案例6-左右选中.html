@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>左右选中.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<script type="text/javascript">
+	</script>
+	
+	<script>
+	//移动一个
+		function lefttoright1(){
+			var left=document.getElementById("left");
+			
+			
+			var leftObj = left.options;
+			
+			
+			for(var i =0;i<leftObj.length;i++){
+				if(leftObj[i].selected){
+					var right=document.getElementById("right");
+					right.appendChild(leftObj[i]);
+					break;
+				}
+			}
+		}
+		//移动多选的
+		function lefttoright2(){
+			var left=document.getElementById("left");
+			
+			
+			var leftObj = left.options;
+			
+			
+			for(var i =0;i<leftObj.length;i++){
+				if(leftObj[i].selected){
+					var right=document.getElementById("right");
+					right.appendChild(leftObj[i]);
+					i--;
+				}
+			}
+		}
+		//全部移动
+		function lefttoright3(){
+			var left=document.getElementById("left");
+			
+			
+			var leftObj = left.options;
+			
+			
+			for(var i =0;i<leftObj.length;i++){
+				
+					var right=document.getElementById("right");
+					right.appendChild(leftObj[i]);
+					i--;
+				
+			}
+		}
+		
+		
+	</script>
+
+	<style>
+		input[type='button']{
+			width:50px;
+		}
+	</style>
+	</head>
+	 
+	<body>
+		<table>
+			<tr>
+				<td>
+					<select id="left" multiple="true" style="width:500px" size="10">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+					</select>
+				</td>
+				<td>
+					<input type="button" value=">" id="toRight1" onclick="lefttoright1()"><br>
+					<input type="button" value=">>" id="toRight2" onclick="lefttoright2()"><br>
+					<input type="button" value=">>>" id="toRight3" onclick="lefttoright3()"><br><br>
+					<input type="button" value="<" id="toLeft1"><br>
+					<input type="button" value="<<" id="toLeft2"><br>
+					<input type="button" value="<<<" id="toLeft3">
+				</td>
+				<td>
+					<select id="right" multiple="true" style="width:500px" size="10">
+						
+					</select>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>
+
+
+
+
+
+
