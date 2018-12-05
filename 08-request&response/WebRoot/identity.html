@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>identity.html</title>
+	
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    这里是验证码. <br>
+    <img alt="验证码" src="/08-request&response/identityServlet" title="看不清楚，换一张" onclick="changeImg(this)">
+  </body>
+  <script type="text/javascript">
+  		function changeImg(obj){
+  			obj.src="/08-request&response/identityServlet?i="+Math.random();
+  		}
+</script>
+</html>

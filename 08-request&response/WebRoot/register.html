@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>signform.html</title>
+	
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  <body>
+		<table border="1" width="100%">
+			<!--8行1列-->
+			<!--logo 
+				嵌套一行3列表格
+			-->
+			<tr>
+				<td>
+					<table width="100%">
+						<tr>
+							<td>
+								
+							</td>
+							<td align="center">
+								<img src="./img/header.jpg" />
+							</td>
+							<td align="right">
+								<a href="#">登录</a>
+								<a href="#">注册</a>
+								<a href="#">购物车</a>&nbsp; &nbsp; &nbsp; &nbsp;         
+							</td>
+						</tr>
+					</table>
+			 	</td>
+			</tr>
+			
+			<!--
+				菜单
+			-->
+			<tr>
+				<td bgcolor="black" height="40px">
+					&nbsp;<a href="#"><font color="white" size="4">首页</font></a>&nbsp;
+			 		&nbsp;<a href="#"><font color="white" size="4">首页</font></a>&nbsp;
+			 		&nbsp;<a href="#"><font color="white" size="4">首页</font></a>&nbsp;
+			 		&nbsp;<a href="#"><font color="white" size="4">首页</font></a>&nbsp;
+			 		
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<td background="./img/regist_bg.jpg" >
+				
+					<form action="/08-request&response/registeredServlet" method="post" onSubmit="return inputNull(this)">
+						<table border="1" width="40%" align="center" height="400px" bgcolor="white">
+							<tr>
+								<td>用户名:</td>
+								<td colspan="2"><input name="uname"></td>
+								
+							</tr>
+							<tr>
+								<td>密码:</td>
+								<td colspan="2"><input id="p1" name="upassword" type="password"></td>
+							</tr>
+							<tr>
+								<td>确认密码:</td>
+								<td colspan="2"><input id="p2" type="password"></td>
+							</tr>
+							
+							<tr>
+								<td>电话:</td>
+								<td colspan="2"><input name="telphone"></td>
+							</tr>
+							<tr>
+								<td>提交:</td>
+								<td><input type="submit" value="提交"></td>
+							</tr>
+						</table>
+					</form>
+				</td>
+			</tr>
+			
+			<script type="text/javascript">
+				function inputNull(form){
+					for(i=0;i<form.length;i++){
+						if(form.elements[i].value==""){
+							
+							alert("空值错误：" + form.elements[i].placeholder + "不能为空");
+							form.elements[i].focus();
+							return false;
+						}
+					}
+					var p1 = document.getElementById("p1").value;
+					var p2 = document.getElementById("p2").value;
+					if(p1!=p2){
+						
+						alert("密码两次不一致");
+						return false;
+					}
+				}
+				
+			</script>
+			
+			<!--版权 root
+				两个段落
+			-->
+			<tr>
+				<td>
+					<p align="center">
+						<a href="#">关于我们</a> 
+						<a href="#">关于我们</a> 
+						<a href="#">关于我们</a> 
+						<a href="#">关于我们</a> 
+						<a href="#">关于我们</a> 
+					</p>
+					
+			 	</td>
+			</tr>
+			
+		</table>
+	</body>
+</html>
+
