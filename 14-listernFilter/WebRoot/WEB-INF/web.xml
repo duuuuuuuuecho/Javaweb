@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>14-llisternFilter</display-name>
+  
+  <filter>
+  <filter-name>encodeFilter</filter-name>
+  <filter-class>filter.encodeFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>encodeFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>helloServlet</servlet-name>
+    <servlet-class>filter.helloServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>servlet.loginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>encodeServlet</servlet-name>
+    <servlet-class>servlet.encodeServlet</servlet-class>
+  </servlet>
+
+
+  <filter>
+  	<filter-name>helloFilter</filter-name>
+  	<filter-class>filter.helloFilter</filter-class>
+  </filter>
+   <filter>
+  	<filter-name>autoFilter</filter-name>
+  	<filter-class>filter.autoFilter</filter-class>
+  </filter>
+
+
+	<filter-mapping>
+		<filter-name>autoFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>helloFilter</filter-name>
+		<url-pattern>/helloServlet</url-pattern>
+	</filter-mapping>
+  <servlet-mapping>
+    <servlet-name>helloServlet</servlet-name>
+    <url-pattern>/helloServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/loginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>encodeServlet</servlet-name>
+    <url-pattern>/encodeServlet</url-pattern>
+  </servlet-mapping>
+
+</web-app>
