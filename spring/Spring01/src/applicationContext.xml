@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   
+	<bean id="userSer" class="hellodemo.UserServiceImpl">
+		<property name="name" value="xiaodu"></property>
+	</bean>
+
+	<!-- 演示依赖注入 -->
+   <bean id="UService" class="DIdemo.UserServiceImpl">
+   	<property name="UserDao" ref="UDao"></property>
+   </bean>
+   <bean id="UDao" class="DIdemo.UserDaoImpl"></bean>
+   
+   <!-- 演示构造方法的注入方式 -->
+   <bean id="car1" class="DIdemo.car1">
+   	<!-- <constructor-arg name="name" value="宝马"></constructor-arg>
+   	<constructor-arg name="price" value="1000000"></constructor-arg> -->
+   	
+   	<constructor-arg index="0" value="宝马"></constructor-arg>
+   	<constructor-arg index="1" value="1000000"></constructor-arg>
+   </bean>
+   
+   <!-- spel表达式 注入-->
+   <bean id="car2" class="DIdemo.car2">
+   	<property name="name" value="#{'奔驰'}"></property>
+   	<property name="price" value="#{100000}"></property>
+   </bean>
+   
+   <!-- 集合注入 -->
+   <bean id="car3" class="DIdemo.car3">
+   	<property name="arr">
+   		<list>
+   			<value>哈哈</value>
+   			<value>呵呵</value>
+   			<value>嘿嘿</value>
+   		</list>
+   	</property>
+   	<property name="map">
+   		<map>
+   			<entry key="123" value="xiaodu"></entry>
+   			<entry key="456" value="hhh"></entry>
+   			<entry key="789" value="ggg"></entry>
+   		</map>
+   	</property>
+   	
+   </bean>
+   
+   
+   
+</beans>

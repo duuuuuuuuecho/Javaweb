@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	
+	<bean id="CustomDao" class="AOPdemo.CustomDaoImpl"></bean>
+	<bean id="myaspect" class="AOPdemo.MyAspectAnno"></bean>
+	
+	<!-- 开启自动代理 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+	<!-- <aop:config>
+		<aop:aspect ref="myaspect">	
+			<aop:before method="log"  pointcut="execution(public void AOPdemo.CustomDaoImpl.save())"/>
+		</aop:aspect>	
+	</aop:config> -->
+	
+	<!-- 配置内置连接池 -->
+	<bean id="dataSource0" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=utf-8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+	
+	<!-- 配置c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test?characterEncoding=utf-8"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+	
+	<!-- 配置JDBC的模板类 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean> 
+	
+	<!-- 配置业务层和持久层 -->
+	<bean id="accountService" class="transaction.accountServiceImpl"></bean>
+	
+	<bean id="accountDao" class="transaction.accountDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+	
+	<!-- *************************************************************************************************** -->
+	<!-- 事务 -->
+	<!-- 平台事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 方法一：声明式事务（采用xml配置文件的方式） -->
+	<!-- 先配置通知 -->
+	<tx:advice id="myadvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="pay"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置aop -->
+	<aop:config>
+		<aop:advisor advice-ref="myadvice" pointcut="execution(public * transaction.accountServiceImpl.pay(String, String, double))"/>
+	</aop:config>
+
+
+	<!-- 方法二：注解式事务 -->
+	<!-- 开启注解事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	
+	
+</beans>
